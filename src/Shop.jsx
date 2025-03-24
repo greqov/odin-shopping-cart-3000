@@ -1,5 +1,9 @@
 function Shop() {
-  return <>Such shop!</>;
+  return (
+    <>
+      <h1>Such shop page!</h1>
+    </>
+  );
 }
 
 export default Shop;
