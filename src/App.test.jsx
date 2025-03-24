@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { createRoutesStub } from 'react-router';
 import userEvent from '@testing-library/user-event';
 import App from './App';
+import ErrorPage from './ErrorPage';
 import Shop from './Shop';
 import { expect } from 'vitest';
 
@@ -42,6 +43,22 @@ describe('App component', () => {
     await user.click(link);
     expect(
       screen.getByRole('heading', { name: /such shop page!/i })
+    ).toBeInTheDocument();
+  });
+
+  it('shows error page for bad routes', () => {
+    const badRoute = '/abc';
+    const Stub = createRoutesStub([
+      {
+        path: '*',
+        Component: ErrorPage
+      }
+    ]);
+
+    render(<Stub initialEntries={[badRoute]} />);
+
+    expect(
+      screen.getByRole('heading', { name: /this page doesn't exist/i })
     ).toBeInTheDocument();
   });
 });
