@@ -2,14 +2,16 @@ import { render, screen } from '@testing-library/react';
 import ProductCard from './ProductCard';
 
 describe('ProductCard component', () => {
-  it('has image and title', () => {
+  it('has image, title, and price', () => {
     const image = '/crorodile.png';
     const title = 'Crocodile';
+    const price = 8;
 
-    render(<ProductCard title={title} image={image} />);
+    render(<ProductCard title={title} image={image} price={price} />);
 
     expect(screen.getByRole('heading', { name: title })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: title })).toBeInTheDocument();
+    expect(screen.getByText(`$${price}`)).toBeInTheDocument();
   });
 
   it('can show default image', () => {

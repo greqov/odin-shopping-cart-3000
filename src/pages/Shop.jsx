@@ -5,7 +5,7 @@ function Shop() {
   return (
     <Layout>
       <h1>Such shop page!</h1>
-      <ProductCard title="product title" image="/crocodile.png" />
+      <ProductCard title="product title" image="/crocodile.png" price={10} />
     </Layout>
   );
 }
