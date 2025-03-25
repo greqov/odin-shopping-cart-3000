@@ -1,16 +1,16 @@
 import { render, screen } from '@testing-library/react';
 import { createRoutesStub } from 'react-router';
 import userEvent from '@testing-library/user-event';
-import App from './App';
+import Home from './Home';
 import ErrorPage from './ErrorPage';
 import Shop from './Shop';
 
-describe('App component', () => {
+describe('Home component', () => {
   it('renders correct heading', () => {
     const Stub = createRoutesStub([
       {
         path: '/',
-        Component: App
+        Component: Home
       }
     ]);
 
@@ -24,7 +24,7 @@ describe('App component', () => {
     const Stub = createRoutesStub([
       {
         path: '/',
-        Component: App
+        Component: Home
       },
       {
         path: '/shop',
