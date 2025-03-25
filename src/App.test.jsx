@@ -4,7 +4,6 @@ import userEvent from '@testing-library/user-event';
 import App from './App';
 import ErrorPage from './ErrorPage';
 import Shop from './Shop';
-import { expect } from 'vitest';
 
 describe('App component', () => {
   it('renders correct heading', () => {
