@@ -1,15 +1,17 @@
+import { Link } from 'react-router';
+
 function Header() {
   return (
     <>
       <header>
-        such header
+        <Link to="/">Home</Link>
         <nav>
           <ul>
             <li>
-              <a href="/shop">Shop</a>
+              <Link to="/shop">Shop</Link>
             </li>
             <li>
-              <a href="/shopping-cart">Cart</a>
+              <Link to="/shopping-cart">Cart</Link>
             </li>
           </ul>
         </nav>
