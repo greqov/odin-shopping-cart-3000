@@ -1,6 +1,6 @@
 import { preventBadSymbols } from '../utils/preventBadSymbols';
 
-function Quantity({ quantity, onChange, onDecrease, onIncrease }) {
+function Quantity({ quantity = 1, onChange, onDecrease, onIncrease }) {
   return (
     <div className="quantity">
       <button type="button" onClick={onDecrease}>
