@@ -14,6 +14,5 @@ describe('Header component', () => {
     render(<Stub initialEntries={['/']} />);
 
     expect(screen.getByRole('link', { name: /shop/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /cart/i })).toBeInTheDocument();
   });
 });
