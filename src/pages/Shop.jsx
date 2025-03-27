@@ -1,20 +1,25 @@
+import { useState } from 'react';
 import Layout from '../components/Layout';
 import ProductCard from '../components/ProductCard';
 import data from '../data.json';
 
 function Shop() {
-  function onClick(quantity) {
-    console.log('got!', quantity);
+  const [cart, setCart] = useState([]);
+
+  function addToCart(data) {
+    const index = cart.findIndex((item) => item.product.id === data.product.id);
+
+    if (index === -1) {
+      setCart([...cart, data]);
+    } else {
+      const arr = [...cart];
+      arr[index].quantity += data.quantity;
+      setCart(arr);
+    }
   }
 
-  const productsCards = data.map(({ id, title, image, price }) => (
-    <ProductCard
-      key={id}
-      title={title}
-      image={image}
-      price={price}
-      onClick={onClick}
-    />
+  const productsCards = data.map((product) => (
+    <ProductCard key={product.id} product={product} onClick={addToCart} />
   ));
 
   return (
