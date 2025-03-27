@@ -13,6 +13,19 @@ describe('Header component', () => {
 
     render(<Stub initialEntries={['/']} />);
 
-    expect(screen.getByRole('link', { name: /shop/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Shop' })).toBeInTheDocument();
+  });
+
+  it('shows total quantity of goods in cart icon', () => {
+    const Stub = createRoutesStub([
+      {
+        path: '/',
+        Component: () => <Header total={7} />
+      }
+    ]);
+
+    render(<Stub initialEntries={['/']} />);
+
+    expect(screen.getByText('7')).toBeInTheDocument();
   });
 });

@@ -1,7 +1,7 @@
 import { Link } from 'react-router';
 import CartIcon from './CartIcon';
 
-function Header() {
+function Header({ total }) {
   return (
     <>
       <header className="flex gap-2">
@@ -12,7 +12,7 @@ function Header() {
               <Link to="/shop">Shop</Link>
             </li>
             <li>
-              <CartIcon to="/shopping-cart" total={5} />
+              <CartIcon to="/shopping-cart" total={total} />
             </li>
           </ul>
         </nav>

@@ -2,10 +2,10 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 
-function Layout({ children }) {
+function Layout({ total, children }) {
   return (
     <>
-      <Header />
+      <Header total={total} />
       <Main>{children}</Main>
       <Footer />
     </>

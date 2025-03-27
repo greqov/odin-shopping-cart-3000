@@ -22,8 +22,10 @@ function Shop() {
     <ProductCard key={product.id} product={product} onClick={addToCart} />
   ));
 
+  const totalQuantity = cart.reduce((acc, curr) => acc + curr.quantity, 0);
+
   return (
-    <Layout>
+    <Layout total={totalQuantity}>
       <h1>Such shop page!</h1>
       <div className="flex gap-2">{productsCards}</div>
     </Layout>
