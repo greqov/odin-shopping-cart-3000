@@ -3,18 +3,17 @@ import ProductCard from './ProductCard';
 import userEvent from '@testing-library/user-event';
 
 describe('ProductCard component', () => {
-  it('has image, title, price, and button', async () => {
+  it('has image, title, price, quantity and "Add to cart" button', async () => {
     const image = '/crorodile.png';
     const title = 'Crocodile';
     const price = 8;
+    const quantity = 5;
     const onClick = vi.fn(() => 0);
     const user = userEvent.setup();
 
     render(
       <ProductCard
-        title={title}
-        image={image}
-        price={price}
+        product={{ title, image, price, quantity }}
         onClick={onClick}
       />
     );
@@ -22,6 +21,7 @@ describe('ProductCard component', () => {
     expect(screen.getByRole('heading', { name: title })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: title })).toBeInTheDocument();
     expect(screen.getByText(`$${price}`)).toBeInTheDocument();
+    expect(screen.getByDisplayValue(`${quantity}`)).toBeInTheDocument();
 
     const button = screen.getByRole('button', { name: /add to cart/i });
     expect(button).toBeInTheDocument();
@@ -32,7 +32,7 @@ describe('ProductCard component', () => {
   it('can show default image', () => {
     const title = 'Crocodile';
 
-    render(<ProductCard title={title} />);
+    render(<ProductCard product={{ title }} />);
 
     const productImage = screen.getByRole('img', { name: title });
     expect(productImage).toBeInTheDocument();
