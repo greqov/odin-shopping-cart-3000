@@ -4,7 +4,7 @@ import CartIcon from './CartIcon';
 function Header() {
   return (
     <>
-      <header>
+      <header className="flex gap-2">
         <Link to="/">Home</Link>
         <nav>
           <ul>
