@@ -5,25 +5,8 @@ function ProductCard({ product, onClick }) {
   const [quantity, setQuantity] = useState(product.quantity || 1);
   const { image = '/no-photo.png', title, price = 0 } = product;
 
-  function onDecrease() {
-    if (+quantity > 1) {
-      setQuantity(+quantity - 1);
-    }
-  }
-
-  function onIncrease() {
-    setQuantity(+quantity + 1);
-  }
-
-  function onChange(e) {
-    let value = e.target.value;
-
-    if (value === '') {
-      setQuantity('');
-      return;
-    }
-
-    setQuantity(+value);
+  function onChange(quantity) {
+    setQuantity(quantity);
   }
 
   return (
@@ -31,12 +14,7 @@ function ProductCard({ product, onClick }) {
       <img src={image} alt={title} />
       <h3>{title}</h3>
       <p>${price}</p>
-      <Quantity
-        quantity={quantity}
-        onChange={onChange}
-        onDecrease={onDecrease}
-        onIncrease={onIncrease}
-      />
+      <Quantity quantity={quantity} onChange={onChange} />
 
       <button
         type="button"

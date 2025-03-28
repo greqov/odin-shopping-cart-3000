@@ -21,10 +21,9 @@ describe('Quantity component', () => {
 
   it('has decrease/increase buttons', async () => {
     const user = userEvent.setup();
-    const onIncrease = vi.fn(() => 0);
-    const onDecrease = vi.fn(() => 0);
+    const onChange = vi.fn(() => 0);
 
-    render(<Quantity onDecrease={onDecrease} onIncrease={onIncrease} />);
+    render(<Quantity quantity={4} onChange={onChange} />);
 
     const decreaseButton = screen.getByRole('button', { name: /\-/i });
     const increaseButton = screen.getByRole('button', { name: /\+/i });
@@ -35,7 +34,6 @@ describe('Quantity component', () => {
     await user.click(increaseButton);
     await user.click(decreaseButton);
 
-    expect(onIncrease).toHaveBeenCalledTimes(2);
-    expect(onDecrease).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledTimes(3);
   });
 });
