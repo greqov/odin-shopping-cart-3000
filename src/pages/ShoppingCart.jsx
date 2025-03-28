@@ -1,7 +1,5 @@
-import Layout from '../components/Layout';
-
 function ShoppingCart() {
-  return <Layout>shopping cart page</Layout>;
+  return <>shopping cart page</>;
 }
 
 export default ShoppingCart;

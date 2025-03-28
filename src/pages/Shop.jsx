@@ -1,10 +1,9 @@
-import { useState } from 'react';
-import Layout from '../components/Layout';
+import { useOutletContext } from 'react-router';
 import ProductCard from '../components/ProductCard';
 import data from '../data.json';
 
 function Shop() {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useOutletContext();
 
   function addToCart(data) {
     const index = cart.findIndex((item) => item.product.id === data.product.id);
@@ -22,13 +21,11 @@ function Shop() {
     <ProductCard key={product.id} product={product} onClick={addToCart} />
   ));
 
-  const totalQuantity = cart.reduce((acc, curr) => acc + curr.quantity, 0);
-
   return (
-    <Layout total={totalQuantity}>
+    <>
       <h1>Such shop page!</h1>
       <div className="flex gap-2">{productsCards}</div>
-    </Layout>
+    </>
   );
 }
 
