@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import Home from './Home';
 import ErrorPage from './ErrorPage';
 import Shop from './Shop';
+import App from '../App';
 
 describe('Home component', () => {
   it('renders correct heading', () => {
@@ -24,11 +25,14 @@ describe('Home component', () => {
     const Stub = createRoutesStub([
       {
         path: '/',
-        Component: Home
-      },
-      {
-        path: '/shop',
-        Component: Shop
+        Component: App,
+        children: [
+          { index: true, Component: Home },
+          {
+            path: '/shop',
+            Component: Shop
+          }
+        ]
       }
     ]);
 
