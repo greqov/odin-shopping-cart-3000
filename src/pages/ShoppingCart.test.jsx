@@ -1,10 +1,28 @@
 import { render, screen } from '@testing-library/react';
-import { RouterProvider, createMemoryRouter, Outlet } from 'react-router';
+import {
+  RouterProvider,
+  createMemoryRouter,
+  useOutletContext
+} from 'react-router';
 import routes from '../routes';
-import ShoppingCart from './ShoppingCart';
+
+vi.mock('react-router', async (importOriginal) => {
+  const actual = await importOriginal();
+  return {
+    ...actual,
+    useOutletContext: vi.fn()
+  };
+});
 
 describe('ShoppingCart component', () => {
+  beforeEach(() => {
+    vi.mocked(useOutletContext).mockReset();
+  });
+
   it('renders correct heading', () => {
+    const mockContext = [[], vi.fn(() => 0)];
+    useOutletContext.mockReturnValue(mockContext);
+
     const router = createMemoryRouter(routes, {
       initialEntries: ['/shopping-cart']
     });
@@ -17,6 +35,9 @@ describe('ShoppingCart component', () => {
   });
 
   it('shows "Empty cart" text for empty cart', () => {
+    const mockContext = [[], vi.fn(() => 0)];
+    useOutletContext.mockReturnValue(mockContext);
+
     const router = createMemoryRouter(routes, {
       initialEntries: ['/shopping-cart']
     });
@@ -27,36 +48,26 @@ describe('ShoppingCart component', () => {
   });
 
   it('shows product item if there is a product in a cart', () => {
-    const cart = [
-      {
-        product: {
-          id: 2,
-          title: 'Alpaca',
-          image: '/alpaca.png',
-          price: 3
-        },
-        quantity: 2
-      }
-    ];
-    const setCart = vi.fn(() => 0);
-
-    const router = createMemoryRouter(
+    const mockContext = [
       [
         {
-          path: '/',
-          element: <Outlet context={[cart, setCart]}></Outlet>,
-          children: [
-            {
-              path: 'shopping-cart',
-              element: <ShoppingCart />
-            }
-          ]
+          product: {
+            id: 2,
+            title: 'Alpaca',
+            image: '/alpaca.png',
+            price: 3
+          },
+          quantity: 2
         }
       ],
-      {
-        initialEntries: ['/shopping-cart']
-      }
-    );
+      vi.fn(() => 0)
+    ];
+
+    useOutletContext.mockReturnValue(mockContext);
+
+    const router = createMemoryRouter(routes, {
+      initialEntries: ['/shopping-cart']
+    });
 
     render(<RouterProvider router={router} />);
 
