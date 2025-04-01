@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Quantity from './Quantity';
 
 function ProductCard({ product, onClick }) {
-  const [quantity, setQuantity] = useState(product.quantity || 1);
+  const [quantity, setQuantity] = useState(1);
   const { image = '/no-photo.png', title, price = 0 } = product;
 
   function onChange(quantity) {

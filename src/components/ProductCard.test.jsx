@@ -7,21 +7,15 @@ describe('ProductCard component', () => {
     const image = '/crorodile.png';
     const title = 'Crocodile';
     const price = 8;
-    const quantity = 5;
     const onClick = vi.fn(() => 0);
     const user = userEvent.setup();
 
-    render(
-      <ProductCard
-        product={{ title, image, price, quantity }}
-        onClick={onClick}
-      />
-    );
+    render(<ProductCard product={{ title, image, price }} onClick={onClick} />);
 
     expect(screen.getByRole('heading', { name: title })).toBeInTheDocument();
     expect(screen.getByRole('img', { name: title })).toBeInTheDocument();
     expect(screen.getByText(`$${price}`)).toBeInTheDocument();
-    expect(screen.getByDisplayValue(`${quantity}`)).toBeInTheDocument();
+    expect(screen.getByDisplayValue('1')).toBeInTheDocument();
 
     const button = screen.getByRole('button', { name: /add to cart/i });
     expect(button).toBeInTheDocument();
