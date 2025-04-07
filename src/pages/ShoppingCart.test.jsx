@@ -71,6 +71,7 @@ describe('ShoppingCart component', () => {
 
     render(<RouterProvider router={router} />);
 
-    expect(screen.getByText(/Alpaca, 2/i)).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Alpaca' })).toBeInTheDocument();
+    expect(screen.getByDisplayValue('2')).toBeInTheDocument();
   });
 });
