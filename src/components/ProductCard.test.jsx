@@ -23,6 +23,33 @@ describe('ProductCard component', () => {
     expect(onClick).toHaveBeenCalled();
   });
 
+  it('can change its quantity by pressing increase/decrease buttons', async () => {
+    const product = {
+      image: '/crorodile.png',
+      title: 'Crocodile',
+      price: 8
+    };
+    const onClick = vi.fn(() => 0);
+    const user = userEvent.setup();
+
+    render(<ProductCard product={product} onClick={onClick} />);
+
+    const decreaseButton = screen.getByRole('button', { name: /\-/i });
+    const increaseButton = screen.getByRole('button', { name: /\+/i });
+    expect(decreaseButton).toBeInTheDocument();
+    expect(increaseButton).toBeInTheDocument();
+
+    expect(screen.getByDisplayValue('1')).toBeInTheDocument();
+
+    await user.click(increaseButton);
+    await user.click(increaseButton);
+
+    expect(screen.getByDisplayValue('3')).toBeInTheDocument();
+
+    await user.click(decreaseButton);
+    expect(screen.getByDisplayValue('2')).toBeInTheDocument();
+  });
+
   it('can show default image', () => {
     const title = 'Crocodile';
 
