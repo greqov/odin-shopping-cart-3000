@@ -30,6 +30,11 @@ function ShoppingCart() {
     />
   ));
 
+  const total = cart.reduce(
+    (acc, curr) => acc + curr.quantity * curr.product.price,
+    0
+  );
+
   return (
     <>
       <h1>Shopping Cart</h1>
@@ -40,6 +45,7 @@ function ShoppingCart() {
       ) : (
         <div className="flex flex-col gap-2">{cartItems}</div>
       )}
+      Total: ${total}
     </>
   );
 }
