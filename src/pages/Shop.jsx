@@ -17,6 +17,7 @@ function Shop() {
     }
   }
 
+  // TODO: get data from fetch
   const productsCards = data.map((product) => (
     <ProductCard key={product.id} product={product} onClick={addToCart} />
   ));
@@ -24,7 +25,11 @@ function Shop() {
   return (
     <>
       <h1>Such shop page!</h1>
-      <div className="flex gap-2">{productsCards}</div>
+      {data.length > 0 ? (
+        <div className="flex gap-2">{productsCards}</div>
+      ) : (
+        'Loading products...'
+      )}
     </>
   );
 }
