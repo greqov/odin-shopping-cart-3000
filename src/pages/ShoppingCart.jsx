@@ -4,8 +4,24 @@ import CartItem from '../components/CartItem';
 function ShoppingCart() {
   const [cart, setCart] = useOutletContext();
 
+  const updateCart = (data) => {
+    const index = cart.findIndex((item) => item.product.id === data.product.id);
+
+    // do we need this if() check?
+    if (index !== -1) {
+      const arr = [...cart];
+      arr[index].quantity = data.quantity;
+      setCart(arr);
+    }
+  };
+
   const cartItems = cart.map(({ product, quantity }) => (
-    <CartItem key={product.id} product={product} quantity={quantity} />
+    <CartItem
+      key={product.id}
+      product={product}
+      quantity={quantity}
+      onChange={updateCart}
+    />
   ));
 
   return (

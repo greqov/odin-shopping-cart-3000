@@ -4,6 +4,7 @@ import {
   createMemoryRouter,
   useOutletContext
 } from 'react-router';
+import userEvent from '@testing-library/user-event';
 import routes from '../routes';
 
 vi.mock('react-router', async (importOriginal) => {
@@ -73,5 +74,42 @@ describe('ShoppingCart component', () => {
 
     expect(screen.getByRole('heading', { name: 'Alpaca' })).toBeInTheDocument();
     expect(screen.getByDisplayValue('2')).toBeInTheDocument();
+  });
+
+  it.skip('update items in a cart by pressing quantity controls buttons', async () => {
+    // TODO: how to update state after a click?
+    const mockContext = [
+      [
+        {
+          product: {
+            id: 2,
+            title: 'Alpaca',
+            image: '/alpaca.png',
+            price: 3
+          },
+          quantity: 2
+        }
+      ],
+      vi.fn(() => 0)
+    ];
+    const user = userEvent.setup();
+
+    useOutletContext.mockReturnValue(mockContext);
+
+    const router = createMemoryRouter(routes, {
+      initialEntries: ['/shopping-cart']
+    });
+
+    render(<RouterProvider router={router} />);
+
+    expect(screen.getByDisplayValue('2')).toBeInTheDocument();
+
+    const increaseButton = screen.getByRole('button', { name: /\+/i });
+    expect(increaseButton).toBeInTheDocument();
+
+    await user.click(increaseButton);
+    await user.click(increaseButton);
+
+    expect(screen.getByDisplayValue('4')).toBeInTheDocument();
   });
 });
