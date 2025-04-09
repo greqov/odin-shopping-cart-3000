@@ -1,9 +1,11 @@
 import Quantity from './Quantity';
 
-function CartItem({ product, quantity }) {
+function CartItem({ product, quantity, onChange }) {
   const { image, title, price } = product;
 
-  const onChange = () => {};
+  const handleChange = (q) => {
+    onChange({ product, quantity: q });
+  };
 
   return (
     <div className="flex flex-row items-center gap-4">
@@ -12,7 +14,7 @@ function CartItem({ product, quantity }) {
         <h3>{title}</h3>
       </div>
       <p>${price}</p>
-      <Quantity quantity={quantity} onChange={onChange} />
+      <Quantity quantity={quantity} onChange={handleChange} />
     </div>
   );
 }
