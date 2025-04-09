@@ -5,14 +5,20 @@ function ShoppingCart() {
   const [cart, setCart] = useOutletContext();
 
   const updateCart = (data) => {
-    const index = cart.findIndex((item) => item.product.id === data.product.id);
+    let arr = [];
 
-    // do we need this if() check?
-    if (index !== -1) {
-      const arr = [...cart];
+    if (data.quantity === 0) {
+      arr = [...cart].filter((item) => item.product.id !== data.product.id);
+    } else {
+      const index = cart.findIndex(
+        (item) => item.product.id === data.product.id
+      );
+
+      arr = [...cart];
       arr[index].quantity = data.quantity;
-      setCart(arr);
     }
+
+    setCart(arr);
   };
 
   const cartItems = cart.map(({ product, quantity }) => (

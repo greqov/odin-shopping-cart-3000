@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 import CartItem from './CartItem';
 
 describe('CartItem component', () => {
-  it('has image, title, price and quantity control', async () => {
+  it('has image, title, price, quantity controls and remove button', async () => {
     const product = {
       id: 1,
       title: 'Bison',
@@ -26,6 +26,12 @@ describe('CartItem component', () => {
     ).toBeInTheDocument();
     expect(screen.getByText(`$${product.price}`)).toBeInTheDocument();
     expect(screen.getByDisplayValue(quantity.toString())).toBeInTheDocument();
+
+    expect(
+      screen.getByRole('button', {
+        name: /remove product/i
+      })
+    ).toBeInTheDocument();
 
     const increaseButton = screen.getByRole('button', { name: /\+/i });
     expect(increaseButton).toBeInTheDocument();

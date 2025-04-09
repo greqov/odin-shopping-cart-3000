@@ -112,4 +112,9 @@ describe('ShoppingCart component', () => {
 
     expect(screen.getByDisplayValue('4')).toBeInTheDocument();
   });
+
+  it.skip('remove item by pressing "Remove product" button', () => {
+    // how to update a state?
+  });
+
 });
