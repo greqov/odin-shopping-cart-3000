@@ -5,7 +5,10 @@ import Layout from './components/Layout';
 function App() {
   const [cart, setCart] = useState([]);
 
-  const totalQuantity = cart.reduce((acc, curr) => acc + curr.quantity, 0);
+  const totalQuantity = cart.reduce(
+    (acc, curr) => acc + (curr.quantity || 0),
+    0
+  );
 
   return (
     <Layout total={totalQuantity}>
