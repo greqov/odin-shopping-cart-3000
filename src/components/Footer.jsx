@@ -2,8 +2,12 @@ function Footer() {
   const url = 'https://github.com/greqov/odin-shopping-cart-3000';
 
   return (
-    <footer className="flex justify-center mt-auto p-4 border-t">
-      <a className="inline-flex gap-1" href={url} target="_blank">
+    <footer className="flex justify-center mt-auto p-4 border-t border-zinc-600">
+      <a
+        className="inline-flex gap-1 hover:text-orange-400 duration-200"
+        href={url}
+        target="_blank"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"

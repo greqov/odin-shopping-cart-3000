@@ -45,7 +45,7 @@ function ShoppingCart() {
       ) : (
         <div className="flex flex-col gap-2">{cartItems}</div>
       )}
-      Total: ${total}
+      <div className="my-3 text-2xl">Total: <b>${total}</b></div>
     </>
   );
 }

@@ -5,7 +5,7 @@ function CartIcon({ to = '', total }) {
     <Link
       to={to}
       title="Go to shopping cart"
-      className="relative flex items-center p-2 border rounded-full"
+      className="relative flex items-center p-2 border border-zinc-600 rounded-full"
     >
       {total > 0 && (
         <span
