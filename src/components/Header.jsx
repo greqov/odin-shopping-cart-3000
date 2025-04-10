@@ -3,21 +3,21 @@ import CartIcon from './CartIcon';
 
 function Header({ total }) {
   return (
-    <>
-      <header className="flex gap-2">
+    <header className="mb-5 px-8 py-4 border-b">
+      <div className="w-full max-w-6xl mx-auto flex items-center gap-2">
         <Link to="/">Home</Link>
-        <nav>
-          <ul>
+        <nav className="grow">
+          <ul className="flex items-center gap-2">
             <li>
               <Link to="/shop">Shop</Link>
             </li>
-            <li>
+            <li className="ml-auto mr-2.5">
               <CartIcon to="/shopping-cart" total={total} />
             </li>
           </ul>
         </nav>
-      </header>
-    </>
+      </div>
+    </header>
   );
 }
 

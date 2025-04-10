@@ -2,8 +2,19 @@ import { Link } from 'react-router';
 
 function CartIcon({ to = '', total }) {
   return (
-    <Link to={to} title="Go to shopping cart">
-      {total > 0 && <span aria-label="Quantity of products">{total}</span>}
+    <Link
+      to={to}
+      title="Go to shopping cart"
+      className="relative flex items-center p-2 border rounded-full"
+    >
+      {total > 0 && (
+        <span
+          className="absolute z-1 top-[-6px] left-full flex items-center justify-center min-w-[20px] min-h-[20px] ml-[-13px] p-0.5 pt-[1px] pb-[3px] bg-zinc-800 text-xs rounded-full leading-none"
+          aria-label="Quantity of products"
+        >
+          {total}
+        </span>
+      )}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -14,6 +25,7 @@ function CartIcon({ to = '', total }) {
         strokeWidth="2"
         strokeLinecap="round"
         strokeLinejoin="round"
+        className="relative top-[1px]"
       >
         <circle cx="9" cy="21" r="1"></circle>
         <circle cx="20" cy="21" r="1"></circle>

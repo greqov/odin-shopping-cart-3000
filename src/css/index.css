@@ -7,7 +7,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: oklch(27.4% 0.006 286.033); /* zinc-800 */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
