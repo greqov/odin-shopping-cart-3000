@@ -6,7 +6,9 @@ function App() {
   const [cart, setCart] = useState([]);
 
   const totalQuantity = cart.reduce(
-    (acc, curr) => acc + (curr.quantity || 0),
+    // multiply by 1 to avoid '', '1' like cases
+    // when entering a quantity in input
+    (acc, curr) => acc + (curr.quantity * 1),
     0
   );
 
