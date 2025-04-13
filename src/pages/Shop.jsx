@@ -26,7 +26,9 @@ function Shop() {
     <>
       <h1>Such shop page!</h1>
       {data.length > 0 ? (
-        <div className="flex gap-2">{productsCards}</div>
+        <div className="grid gap-4 products-cards">
+          {productsCards}
+        </div>
       ) : (
         'Loading products...'
       )}

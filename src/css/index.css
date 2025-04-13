@@ -26,22 +26,8 @@ body {
   min-height: 100%;
 }
 
-.product-card {
-  width: 200px;
-  padding: 10px;
-  border: 1px solid #eee;
-  text-align: center;
-}
-
-.quantity {
-  display: flex;
-  justify-content: center;
-  margin: 8px 0;
-}
-
-.quantity input {
-  width: 100px;
-  text-align: center;
+.products-cards {
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
 }
 
 /* hide arrows in input type number */

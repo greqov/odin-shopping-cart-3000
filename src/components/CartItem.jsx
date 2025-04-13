@@ -15,9 +15,9 @@ function CartItem({ product, quantity, onChange }) {
     <div className="flex flex-row items-center gap-4">
       <div>
         <img className="w-40" src={image} alt={title} />
-        <h3>{title}</h3>
+        <h3 className="text-center italic">{title}</h3>
       </div>
-      <p>${price}</p>
+      <p className="min-w-8 text-right">${price}</p>
       <Quantity quantity={quantity} onChange={handleChange} />
       <button
         className="cursor-pointer"

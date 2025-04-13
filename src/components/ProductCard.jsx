@@ -10,8 +10,8 @@ function ProductCard({ product, onClick }) {
   }
 
   return (
-    <div className="product-card">
-      <img src={image} alt={title} />
+    <div className="p-4 border border-zinc-600 text-center rounded-xl">
+      <img className="mx-auto" src={image} alt={title} />
       <h3>{title}</h3>
       <p>${price}</p>
       <Quantity quantity={quantity} onChange={onChange} />
@@ -21,7 +21,7 @@ function ProductCard({ product, onClick }) {
         onClick={() => {
           quantity > 0 && onClick({ product, quantity });
         }}
-        className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+        className="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 min-w-[140px] text-center"
       >
         Add to cart
       </button>

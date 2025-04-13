@@ -20,11 +20,12 @@ function Quantity({ quantity = 1, onChange }) {
   }
 
   return (
-    <div className="quantity">
+    <div className="flex justify-center mx-0 my-2">
       <button type="button" onClick={onDecrease} className={btnClassName}>
         -
       </button>
       <input
+        className="w-[80px] text-center"
         type="number"
         name="productQuantity"
         min="1"

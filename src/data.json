@@ -1,20 +1,74 @@
 [
   {
     "id": 0,
-    "title": "Crocodile",
-    "image": "/crocodile.png",
+    "title": "alpaca",
+    "image": "/alpaca.png",
     "price": 1
   },
   {
     "id": 1,
-    "title": "Bison",
-    "image": "/bison.png",
+    "title": "bear",
+    "image": "/bear.png",
     "price": 2
   },
   {
     "id": 2,
-    "title": "Alpaca",
-    "image": "/alpaca.png",
+    "title": "bison",
+    "image": "/bison.png",
+    "price": 1.5
+  },
+  {
+    "id": 3,
+    "title": "buffalo",
+    "image": "/buffalo.png",
+    "price": 2.5
+  },
+  {
+    "id": 4,
+    "title": "cheetah",
+    "image": "/cheetah.png",
+    "price": 1.4
+  },
+  {
+    "id": 5,
+    "title": "crocodile",
+    "image": "/crocodile.png",
     "price": 3
+  },
+  {
+    "id": 6,
+    "title": "elephant",
+    "image": "/elephant.png",
+    "price": 2.6
+  },
+  {
+    "id": 7,
+    "title": "fox",
+    "image": "/fox.png",
+    "price": 1.1
+  },
+  {
+    "id": 8,
+    "title": "giraffe",
+    "image": "/giraffe.png",
+    "price": 3.1
+  },
+  {
+    "id": 9,
+    "title": "hippo",
+    "image": "/hippo.png",
+    "price": 2.4
+  },
+  {
+    "id": 10,
+    "title": "lion",
+    "image": "/lion.png",
+    "price": 1.8
+  },
+  {
+    "id": 11,
+    "title": "wild-boar",
+    "image": "/wild-boar.png",
+    "price": 3.1
   }
 ]
